@@ -11,7 +11,7 @@ RUN echo "" >> /usr/local/etc/php-fpm.d/docker-php-serversideup-pool.conf && \
 
 RUN install-php-extensions intl
 
-COPY --chown=www-data:www-data . .
+COPY --chown=www-data:www-data . . 
 
 RUN chmod -R 755 storage  \
     && mkdir -p bootstrap/cache \
