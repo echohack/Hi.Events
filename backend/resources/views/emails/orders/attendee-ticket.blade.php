@@ -52,8 +52,10 @@
       "@type": "Organization",
       "name": "{{ $organizer->getName() }}"
     },
-    "startDate": "{{ DateHelper::convertFromUTC($event->getStartDate(), $event->getTimezone()) }}"@if($event->getEndDate()),
-    "endDate": "{{ DateHelper::convertFromUTC($event->getEndDate(), $event->getTimezone()) }}"@endif
+    "startDate": "{{ DateHelper::convertFromUTC($event->getStartDate(), $event->getTimezone()) }}"
+@if($event->getEndDate())
+    ,"endDate": "{{ DateHelper::convertFromUTC($event->getEndDate(), $event->getTimezone()) }}"
+@endif
   },
   "ticketToken": "qrCode:{{ $attendee->getPublicId() }}",
   "ticketNumber": "{{ $attendee->getPublicId() }}",
