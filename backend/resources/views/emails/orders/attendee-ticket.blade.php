@@ -37,19 +37,19 @@
 
 <script type="application/ld+json">
         {
-  "@context": "http://schema.org",
-  "@type": "EventReservation",
+  "@@context": "http://schema.org",
+  "@@type": "EventReservation",
   "reservationNumber": "{{ $attendee->getPublicId() }}",
   "reservationStatus": "http://schema.org/Confirmed",
   "underName": {
-    "@type": "Person",
+    "@@type": "Person",
     "name": "{{ $attendee->getFirstName() }} {{ $attendee->getLastName() }}"
   },
   "reservationFor": {
-    "@type": "Event",
+    "@@type": "Event",
     "name": "{{ $event->getTitle() }}",
     "performer": {
-      "@type": "Organization",
+      "@@type": "Organization",
       "name": "{{ $organizer->getName() }}"
     },
     "startDate": "{{ DateHelper::convertFromUTC($event->getStartDate(), $event->getTimezone()) }}"
