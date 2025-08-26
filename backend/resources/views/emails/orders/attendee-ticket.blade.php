@@ -49,15 +49,10 @@
     "name": "{{ $event->getTitle() }}",
     "performer": {
       "@type": "Organization",
-      "name": "{{ $organizer->getName() }}",
+      "name": "{{ $organizer->getName() }}"
     },
-    "startDate": "{{ DateHelper::convertFromUTC($event->getStartDate(), $event->getTimezone()) }}",
-
-    @if($event->getEndDate())
-      "endDate": "{{ DateHelper::convertFromUTC($event->getEndDate(), $event->getTimezone()) }}",
-    @endif
-
-    @if ($eventSettings->getLocationDetails())
+    "startDate": "{{ DateHelper::convertFromUTC($event->getStartDate(), $event->getTimezone()) }}"@if($event->getEndDate()),
+    "endDate": "{{ DateHelper::convertFromUTC($event->getEndDate(), $event->getTimezone()) }}"@endif@if ($eventSettings->getLocationDetails()),
     "location": {
       "@type": "Place",
       "name": "{{ $eventSettings->getAddress()->venue_name }}",
@@ -69,12 +64,11 @@
         "postalCode": "{{ $eventSettings->getAddress()->zip_or_postal_code }}",
         "addressCountry": "{{ $eventSettings->getAddress()->country }}"
       }
-    },
-    @endif
-
+    }@endif
+  },
   "ticketToken": "qrCode:{{ $attendee->getPublicId() }}",
   "ticketNumber": "{{ $attendee->getPublicId() }}",
-  "ticketPrintUrl": "{{ $ticketUrl }}",
+  "ticketPrintUrl": "{{ $ticketUrl }}"
 }
 </script>
 </x-mail::message>
