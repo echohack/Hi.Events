@@ -55,8 +55,15 @@ Hi.Events has two main directories: `backend` (Laravel) and `frontend` (React).
 
 3. **Mail Server Configuration:**
 
-   Configure Mailtrap for email handling, or use the `log` driver to log emails locally:
+   **Option A: Postmark (Recommended for production):**
+   ```bash
+   MAIL_MAILER=postmark
+   POSTMARK_TOKEN=your_postmark_server_api_token
+   MAIL_FROM_ADDRESS=your_verified_sender@yourdomain.com
+   MAIL_FROM_NAME="${APP_NAME}"
+   ```
 
+   **Option B: Mailtrap (Development/Testing):**
    ```bash
    MAIL_MAILER=smtp
    MAIL_HOST=smtp.mailtrap.io
@@ -66,8 +73,10 @@ Hi.Events has two main directories: `backend` (Laravel) and `frontend` (React).
    MAIL_ENCRYPTION=tls
    MAIL_FROM_ADDRESS=your_email
    MAIL_FROM_NAME="${APP_NAME}"
+   ```
 
-   # Alternatively use just this value to log emails locally:
+   **Option C: Local logging (Development only):**
+   ```bash
    MAIL_MAILER=log
    ```
 
@@ -217,7 +226,9 @@ Visit `http://localhost:5678` to view the frontend.
    Verify the database credentials in the `.env` file and ensure the PostgreSQL service is running.
 
 3. **Mail Server Errors:**  
-   Ensure that your mail server credentials (e.g., Mailtrap) are correct or use the `log` driver for local email logging.
+   - **For Postmark:** Ensure your `POSTMARK_TOKEN` is correct and your sender email is verified in Postmark
+   - **For SMTP:** Ensure that your mail server credentials (e.g., Mailtrap) are correct
+   - **For Development:** Use the `log` driver for local email logging: `MAIL_MAILER=log`
 
 4. **Frontend not connecting to the backend:**  
    Ensure the API URLs are set correctly in both the frontend `.env` file and the backend `.env` file. Also, verify that environment variables are properly exported in the terminal.

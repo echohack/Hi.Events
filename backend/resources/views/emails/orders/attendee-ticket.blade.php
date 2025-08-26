@@ -69,9 +69,8 @@
         "postalCode": "{{ $eventSettings->getAddress()->zip_or_postal_code }}",
         "addressCountry": "{{ $eventSettings->getAddress()->country }}"
       }
-    }
-  },
-  @endif
+    },
+    @endif
 
   "ticketToken": "qrCode:{{ $attendee->getPublicId() }}",
   "ticketNumber": "{{ $attendee->getPublicId() }}",
