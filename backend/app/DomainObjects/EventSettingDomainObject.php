@@ -31,14 +31,19 @@ HTML;
 
     public function getAddress(): AddressDTO
     {
+        $locationDetails = $this->getLocationDetails();
+        if (!is_array($locationDetails)) {
+            $locationDetails = [];
+        }
+        
         return new AddressDTO(
-            venue_name: $this->getLocationDetails()['venue_name'] ?? null,
-            address_line_1: $this->getLocationDetails()['address_line_1'] ?? null,
-            address_line_2: $this->getLocationDetails()['address_line_2'] ?? null,
-            city: $this->getLocationDetails()['city'] ?? null,
-            state_or_region: $this->getLocationDetails()['state_or_region'] ?? null,
-            zip_or_postal_code: $this->getLocationDetails()['zip_or_postal_code'] ?? null,
-            country: $this->getLocationDetails()['country'] ?? null,
+            venue_name: $locationDetails['venue_name'] ?? null,
+            address_line_1: $locationDetails['address_line_1'] ?? null,
+            address_line_2: $locationDetails['address_line_2'] ?? null,
+            city: $locationDetails['city'] ?? null,
+            state_or_region: $locationDetails['state_or_region'] ?? null,
+            zip_or_postal_code: $locationDetails['zip_or_postal_code'] ?? null,
+            country: $locationDetails['country'] ?? null,
         );
     }
 }
