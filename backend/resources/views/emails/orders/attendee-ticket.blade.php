@@ -11,7 +11,7 @@
 
 <x-mail::message>
 # {{ __('You\'re going to') }} {{ $event->getTitle() }}! 🎉
-{{-- Updated template --}}
+{{-- Fixed array access issue v2 --}}
 <br>
 <br>
 
