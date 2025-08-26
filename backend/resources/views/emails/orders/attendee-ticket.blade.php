@@ -11,6 +11,7 @@
 
 <x-mail::message>
 # {{ __('You\'re going to') }} {{ $event->getTitle() }}! 🎉
+{{-- Updated template --}}
 <br>
 <br>
 
