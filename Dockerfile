@@ -27,6 +27,11 @@ RUN mkdir -p /app/backend/bootstrap/cache \
     && find /app/backend -type d -exec chmod 755 {} \; \
     && find /app/backend -type f -exec chmod 644 {} \; \
     && chmod -R 755 /app/backend/storage /app/backend/bootstrap/cache \
+    && composer require --working-dir=/app/backend symfony/postmark-mailer symfony/http-client \
+        --ignore-platform-reqs \
+        --no-interaction \
+        --optimize-autoloader \
+        --prefer-dist \
     && composer install --working-dir=/app/backend \
         --ignore-platform-reqs \
         --no-interaction \

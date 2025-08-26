@@ -20,7 +20,12 @@ RUN chmod -R 755 storage  \
     && chown -R www-data:www-data /var/lib/nginx \
     && chmod -R 755 /var/lib/nginx
 
-RUN composer install \
+RUN composer require symfony/postmark-mailer symfony/http-client \
+    --ignore-platform-reqs \
+    --no-interaction \
+    --optimize-autoloader \
+    --prefer-dist \
+    && composer install \
     --ignore-platform-reqs \
     --no-interaction \
     --no-dev \
